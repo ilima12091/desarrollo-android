@@ -63,7 +63,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        LoginLogo(modifier = Modifier.fillMaxWidth())
+        LoginLogo()
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = email,
@@ -138,7 +138,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun LoginLogo(modifier: Modifier = Modifier) {
+fun LoginLogo() {
     Box(modifier = Modifier.fillMaxWidth()) {
         Image(
             painter = painterResource(id = R.drawable.ic_launcher_background),
