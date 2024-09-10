@@ -26,7 +26,7 @@ import com.example.vistas_estilos_navegacion_leccion_1.ui.theme.Orange100
 fun EventContent() {
     Column(
         modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(16.dp))
             .size(200.dp)
             .background(Orange100)
             .padding(16.dp)

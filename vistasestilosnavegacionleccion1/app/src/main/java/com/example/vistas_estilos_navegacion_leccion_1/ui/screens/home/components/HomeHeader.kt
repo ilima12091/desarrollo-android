@@ -27,7 +27,7 @@ fun HomeHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(32.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -38,7 +38,6 @@ fun HomeHeader() {
                 text = "Current location",
                 color = Color.Gray
             )
-            // Material icon of location
             Row(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
                 verticalAlignment = Alignment.CenterVertically,
