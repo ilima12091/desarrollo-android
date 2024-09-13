@@ -11,7 +11,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.LocationOn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,11 +24,28 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.vistas_estilos_navegacion_leccion_1.R
 import com.example.vistas_estilos_navegacion_leccion_1.ui.theme.Orange100
 
 @Composable
-fun HomeHeader() {
+fun HomeHeader(
+    userEmail: String = "",
+    navigateToLogin: () -> Unit = {},
+    navigateToUserDetails: () -> Unit = {},
+) {
+    var showDialog by remember { mutableStateOf(false) }
+
+    LogoutConfirmationAlertDialog(
+        showDialog = showDialog,
+        onConfirm = {
+            showDialog = false
+            navigateToLogin()
+        },
+        onDismiss = {
+            showDialog = false
+        }
+    )
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -51,10 +73,21 @@ fun HomeHeader() {
                 Text(text = "Surakarta, USA", fontWeight = FontWeight.Bold)
             }
         }
-        Image(
-            painter = painterResource(id = R.drawable.user_avatar),
-            contentDescription = "User avatar"
-        )
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            TextButton(onClick = navigateToUserDetails) {
+                Text(
+                    text = userEmail,
+                    fontSize = 12.sp
+                )
+            }
+            Image(
+                painter = painterResource(id = R.drawable.user_avatar),
+                contentDescription = "User avatar"
+            )
+            TextButton(onClick = { showDialog = true }) {
+                Text(text = "Logout", color = Color.Red)
+            }
+        }
     }
 }
 

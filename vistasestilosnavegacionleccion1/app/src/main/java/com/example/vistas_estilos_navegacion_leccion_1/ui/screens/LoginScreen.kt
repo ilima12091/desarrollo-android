@@ -1,5 +1,6 @@
 package com.example.vistas_estilos_navegacion_leccion_1.ui.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -32,10 +34,11 @@ import com.example.vistas_estilos_navegacion_leccion_1.R
 import com.example.vistas_estilos_navegacion_leccion_1.ui.theme.Vistasestilosnavegacionleccion1Theme
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen(modifier: Modifier = Modifier, navigateToHome: (userEmail: String) -> Unit = {}) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     Column(
         modifier = modifier.padding(16.dp),
@@ -72,8 +75,15 @@ fun LoginScreen(modifier: Modifier = Modifier) {
             Text(text = "Forgot Password?")
         }
         Button(onClick = {
-            email = ""
-            password = ""
+            if (email.endsWith("@test.com") && password == "Password123") {
+                navigateToHome(email)
+            } else {
+                Toast.makeText(
+                    context,
+                    "Invalid credentials",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "LOGIN")
         }

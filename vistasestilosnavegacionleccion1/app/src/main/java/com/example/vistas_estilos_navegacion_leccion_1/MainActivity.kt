@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     MainNavHost(
                         modifier = Modifier.padding(innerPadding),
                         navController = navController,
-                        startDestination = "HomeScreen"
+                        startDestination = "LoginScreen"
                     )
                 }
             }
