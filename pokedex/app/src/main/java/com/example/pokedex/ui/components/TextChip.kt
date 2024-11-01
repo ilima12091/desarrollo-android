@@ -24,13 +24,13 @@ fun TextChip(
         modifier = modifier
             .clip(RoundedCornerShape(40.dp))
             .background(color)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 8.dp, vertical = 4.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = text,
-            fontSize = 24.sp,
+            fontSize = 20.sp,
             color = Color.White
         )
     }

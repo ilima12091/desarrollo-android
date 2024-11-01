@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -52,16 +54,17 @@ fun PokemonListItem(
             model = pokemon?.details?.sprites?.frontDefault,
             contentDescription = "Pokemon",
             contentScale = ContentScale.Fit,
-            modifier = Modifier.fillMaxHeight().aspectRatio(1f)
+            modifier = Modifier
+                .width(140.dp)
         )
         Column {
             Text(
                 text = pokemon?.name?.replaceFirstChar {
                     if (it.isLowerCase()) it.titlecase() else it.toString()
                 } ?: "",
-                fontSize = 32.sp,
+                fontSize = 26.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = Color.White,
             )
             LazyRow (
                 Modifier.padding(top = 16.dp),

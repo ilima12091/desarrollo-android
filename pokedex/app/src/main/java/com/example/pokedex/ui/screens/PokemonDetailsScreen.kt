@@ -76,15 +76,15 @@ fun PokemonDetailsScreen(
         ) {
             LazyColumn(
                 modifier = Modifier
-                    .padding(horizontal = 32.dp)
-                    .padding(top = 220.dp)
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 160.dp)
                     .clip(RoundedCornerShape(
-                        topStart = 60.dp,
-                        topEnd = 60.dp
+                        topStart = 40.dp,
+                        topEnd = 40.dp
                     ))
                     .background(Color.White)
-                    .padding(horizontal = 32.dp)
-                    .padding(top = 60.dp)
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 40.dp)
                     .fillMaxHeight()
             ) {
                 item {
@@ -119,7 +119,7 @@ fun PokemonDetailsScreen(
                     )
                     Text(
                         text = "Stats",
-                        fontSize = 32.sp,
+                        fontSize = 28.sp,
                         modifier = Modifier.padding(vertical = 16.dp),
                         fontWeight = FontWeight.SemiBold
                     )
@@ -133,15 +133,15 @@ fun PokemonDetailsScreen(
                 item {
                     Text(
                         text = "Moves",
-                        fontSize = 32.sp,
+                        fontSize = 28.sp,
                         modifier = Modifier.padding(top = 16.dp),
                         fontWeight = FontWeight.SemiBold
                     )
                     LazyHorizontalGrid (
                         rows = GridCells.Fixed(2),
                         modifier = Modifier
-                            .padding(top = 16.dp)
-                            .height(100.dp),
+                            .padding(vertical = 16.dp)
+                            .height(80.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp),
                         horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
@@ -149,7 +149,7 @@ fun PokemonDetailsScreen(
                             TextChip(
                                 text = pokemonMove.move.name.replaceFirstChar { it.uppercase() },
                                 color = getColorFromType(pokemonDetails?.types?.get(0)?.type?.name ?: ""),
-                                modifier = Modifier.defaultMinSize(minWidth = 200.dp)
+                                modifier = Modifier.defaultMinSize(minWidth = 160.dp)
                             )
                         }
                     }
@@ -166,8 +166,8 @@ fun PokemonDetailsScreen(
                     model = if (showFrontSprite) pokemonDetails?.sprites?.frontDefault ?: "" else pokemonDetails?.sprites?.backDefault ?: "",
                     contentDescription = "Pokemon",
                     modifier = Modifier
-                        .height(280.dp)
-                        .width(280.dp)
+                        .height(220.dp)
+                        .width(220.dp)
                         .padding(8.dp)
                         .clip(CircleShape)
                         .background(getColorFromType(pokemonDetails?.types?.getOrNull(0)?.type?.name ?: ""))

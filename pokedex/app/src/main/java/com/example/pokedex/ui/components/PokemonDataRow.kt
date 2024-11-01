@@ -19,11 +19,11 @@ fun PokemonDataRow(
 ) {
     Row(
         Modifier.fillMaxWidth()
-            .padding(vertical = 16.dp),
+            .padding(vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Text(text = label, fontSize = 24.sp)
-        Text(text = value, fontSize = 24.sp)
+        Text(text = label, fontSize = 18.sp)
+        Text(text = value, fontSize = 18.sp)
     }
 }
 
